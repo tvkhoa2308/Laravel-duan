@@ -84,7 +84,7 @@
 
                                                 <div class="mb-3">
                                                     <label for="email" class="form-label">Email</label>
-                                                    <input name= "email"type="text" class="form-control" id="" placeholder="Enter email">
+                                                    <input name= "email"type="text" class="form-control" id="" placeholder="Enter email" value="{{old('email')}}">
                                                 </div>
                                                 @if ($errors->has('email'))
                                                 <span class="text-danger">*{{ $errors->first('email') }}</span>

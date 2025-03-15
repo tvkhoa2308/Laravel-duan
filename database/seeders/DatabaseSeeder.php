@@ -17,8 +17,10 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Văn khoa',
-            'email' => 'vkhoa6642@gmail.com',
+            // 'email' => 'vkhoa6642@gmail.com',
             'password' => '123456'
         ]);
+         // Tạo thêm 10 người dùng giả
+         User::factory(10)->create();
     }
 }

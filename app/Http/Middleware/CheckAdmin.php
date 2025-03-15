@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-
-class CheckLogin
+class CheckAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,12 +16,9 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next): Response
     {
-
-        if (Auth::id() == null) {
-            return redirect()->route('index')->with('error', "Bạn phải đăng nhập để sử dụng");
+        if (Auth::id() > 0) {
+            return redirect()->route('dashboard');
         }
-
-
 
         return $next($request);
     }

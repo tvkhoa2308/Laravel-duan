@@ -11,7 +11,8 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
-
+    protected $table = 'users'; // Tên bảng trong database
+    protected $primaryKey = 'id';
     /**
      * The attributes that are mass assignable.
      *

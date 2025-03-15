@@ -2,36 +2,29 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\LoginRequest;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserRequets;
 
 class UserController extends Controller
 {
-    public function __construct()
+    public function __construct() {}
+
+    public function index()
     {
 
+        $template = 'backend.users.home.index';
+        $users = User::paginate(10);
+        return view('backend.users.layout', compact('template', 'users'));
     }
 
+    public function create()
+    {
+        $template = 'backend.users.home.create';
 
-    public function index(){
-        return view('backend.auth.login');
+        return view('backend.users.layout', compact('template'));
     }
-    public function login(LoginRequest $request){
-
-        $check = [
-            'email' => $request->input('email'),
-           'password' =>  $request->input('password')
-        ];
-
-        if (Auth::attempt( $check )) {
-
-
-             return redirect()->route('dashboard')->with('success' , "Đăng nhập thành công!");
-        }
-
-        return redirect()->route('index')->with('error', "Sai tài khoản hoặc mật khẩu");
-    }
-
+   
 }
